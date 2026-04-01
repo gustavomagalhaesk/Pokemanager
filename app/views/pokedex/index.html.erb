@@ -1,23 +1,33 @@
-<div class=""> 
-  <p style="color: green"><%= notice %></p>
-
+<div class="pt-3"> 
+  
   <% content_for :title, "Pokedex" %>
 
   <h2 class="row bg-info text-light shadow justify-content-center">Pokedex</h2>
 
+  <p style="color: green"><%= notice %></p>
 
-  <%= link_to "New pokedex", new_pokedex_path %>
+  
+  
   <div class="row">
     <%@pokedex.each do |pokemon|%>
       <div class="col-2 text-center p-2">
-        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<%= pokemon.pokedex_id %>.png"
-        class="border-bottom border-3 <%= type_color(pokemon.pk_type)%>" >
+        <div class=" dropend">
+          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<%= pokemon.pokedex_id %>.png"
+          class="border-bottom border-3 <%= type_color(pokemon.pk_type)%> dropdown-toggle" type="button" data-bs-toggle="dropdown" >
+          <ul class="dropdown-menu text-center">
+            <li><%= link_to "View #{pokemon.name}", pokedex_path(pokemon.id), class:"link-offset-2 link-underline link-underline-opacity-0" %></li>
+            <li><%= link_to "Edit #{pokemon.name}", edit_pokedex_path(pokemon.id), class:"link-offset-2 link-underline link-underline-opacity-0" %></li>
+            <li><%= link_to "Delete #{pokemon.name}", pokedex_path(pokemon), data: { turbo_method: :delete }, class:"link-offset-2 link-underline link-underline-opacity-0" %></li>
+          </ul>
+        </div>
         <p class="mb-0"><%= pokemon.pokedex_id %></p>
         <p class="mb-0"><%= pokemon.name %></p>
         <p class="mb-0"><%= pokemon.pk_type %></p>
       </div>
+      
     <% end %>
   </div>
+  <%= link_to "Register a new pokemon in Pokedex", new_pokedex_path, class:"w-100 btn btn-success px-5" %>
 </div>
 
 
