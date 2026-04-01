@@ -8,24 +8,26 @@
   
   <%= link_to "New pokemon", new_pokemon_path %>
 
-  <div class="row p-2">
-    <%@pokemons.each do |pokemon|%>
-      <div class="border shadow-sm rounded mt-1">
-        <div class="row rounded border-start border-4 <%= type_color(pokemon.pokedex.pk_type)%>">
-          <div class="col-2 text-center">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<%= pokemon.pokedex_id %>.png">
-          </div>
-          <div class="col-8 p-2">
-            <h6 class="mb-0"><%= pokemon.pokedex.name %> | id: <%= pokemon.id %></h6>
-            <p class="mb-0"><%= pokemon.pokedex.pk_type %></p>
-            <p class="mb-0"> Lvl: <%= pokemon.level %></p>
-            <p> Trainer: <%= pokemon.trainer.name %></p>
-          </div>
-          <div class="col p-1">
-            <%= link_to "Show this pokemon", pokemon, class:"btn btn-info" %>
+  <div class="w-100 d-flex justify-content-center">
+    <div class="row p-2 w-75 ">
+      <%@pokemons.each do |pokemon|%>
+        <div class="border shadow-sm rounded mt-1">
+          <div class="row rounded border-start border-4 <%= type_color(pokemon.pokedex.pk_type)%>">
+            <div class="col-2 text-center">
+              <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<%= pokemon.pokedex_id %>.png">
+            </div>
+            <div class="col-6 p-2">
+              <h6 class="mb-0"><%= pokemon.pokedex.name %> | id: <%= pokemon.id %></h6>
+              <p class="mb-0"><%= pokemon.pokedex.pk_type %></p>
+              <p class="mb-0"> Lvl: <%= pokemon.level %></p>
+              <p> Trainer: <%= pokemon.trainer.name %></p>
+            </div>
+            <div class="col-3 p-1">
+              <%= link_to "Show this pokemon", pokemon, class:"btn btn-info text-white" %>
+            </div>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

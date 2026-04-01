@@ -63,8 +63,7 @@ class PokemonsController < ApplicationController
       @pokemon = Pokemon.find(params.expect(:id))
     end
 
-    # Only allow a list of trusted parameters through.
     def pokemon_params
-      params.expect(pokemon: [ :trainer_id, :pokedex_id, :level, :on_team ])
+      params.expect(pokemon: [ :pokedex_id, :level, :on_team, :trainer_id ])
     end
 end

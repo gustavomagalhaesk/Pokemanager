@@ -14,10 +14,10 @@
       <div class="col">
         <div class="row">
           <h3 class="col"><%= trainer.name %></h3>
-          <span class="col text-end pl-0"><%= link_to 'Show this Trainer', trainer, class:"btn btn-light"%></span>
+          <span class="col text-end pl-0"><%= link_to 'Show this Trainer', trainer, class:"btn btn-info text-light"%></span>
         </div>
         <div class="row">
-          <%@pokemons.where(trainer_id: trainer).each do |pokemon|%>
+          <%@pokemons.where(trainer_id: trainer, on_team: true).each do |pokemon|%>
             <div class="col-md-auto text-center">
               <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<%= pokemon.pokedex_id %>.png"
               class="border-bottom border-3 <%= type_color(pokemon.pokedex.pk_type)%>" >

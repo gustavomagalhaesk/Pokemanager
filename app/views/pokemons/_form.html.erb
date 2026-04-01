@@ -11,10 +11,8 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :trainer_id, style: "display: block" %>
-    <%= form.number_field :trainer_id, value: params[:trainer_id] %>
-  </div>
+  <%= form.label :trainer_id, style: "display: block" %>
+  <%= form.number_field :trainer_id, value: params[:trainer] %>
 
   <div>
     <%= form.label :pokedex_id, style: "display: block" %>
