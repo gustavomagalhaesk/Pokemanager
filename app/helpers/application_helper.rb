@@ -10,8 +10,8 @@ module ApplicationHelper
     elsif type.downcase.include?("water") or type.downcase.include?("ice")
       "border-info"
     elsif type.downcase.include?("fairy")
-      "border-color-pink"
-    elsif type.downcase.include?("posion")
+      "border-fairy"
+    elsif type.downcase.include?("poison")
       "border-poison"
     elsif type.downcase.include?("ground") or type.downcase.include?("fighting")
       "border-warning-subtle"
