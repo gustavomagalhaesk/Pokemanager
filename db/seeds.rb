@@ -43,7 +43,7 @@ end
 puts "\nCriando Items e Inventários..."
 
 
-item = Item.find_or_create_by!(sku: "pokebola-01", name: "Pokébola")
+item = Item.find_or_create_by!(sku: "pkball", price: "10", name: "Pokébola", url_image: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png")
 puts "Item criado: #{item.name}"
 
 

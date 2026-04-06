@@ -1,4 +1,6 @@
 module ApplicationHelper
+
+
   # NÃO ESTÁ FUNCIONANDO POIS O CINZA ESTÁ SOBRESCREVENDO NO FINAL
   def type_color(type)
     if type.downcase.include?("grass") or type.downcase.include?("bug")

@@ -2,27 +2,59 @@
 
 
 
+<div class="container mt-5">
+  <% content_for :title, "Visualizar Pokémon" %>
 
-<%= render @pokedex %>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      
+      <div class="card shadow border-0 overflow-hidden">
+        
+        <div class="card-header bg-info text-white text-center py-3">
+          <h1 class="h3 mb-0">Detalhes do Pokémon</h1>
+        </div>
 
-<div>
-  <%= link_to "Edit this pokedex", edit_pokedex_path(@pokedex) %> |
-  <%= link_to "Back to pokedex", pokedex_index_path %>
+        <div class="card-body p-4 ">
+          
+          <div class="row justify-content-center align-items-center">
+            <div class="col-1 ">
+              <% unless @pokedex.id == 1 %>
+                <%= link_to '', pokedex_path(@pokedex.id - 1), class: "btn btn-primary bi bi-arrow-left" %>
+              <% end %>
+            </div>
 
-  <%= button_to "Destroy this pokedex", @pokedex, method: :delete %>
-</div>
+            <div class="text-center mb-4 col-5">
+              <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<%= @pokedex.id %>.png" 
+                  class="rounded-circle shadow-sm border bg-light" 
+                  style="width: 120px; height: 120px; object-fit: contain;">
+            </div>
 
+            <div class="col-1 ">
+              <% unless @pokedex.id == 151 %>
+                <%= link_to '', pokedex_path(id:(@pokedex.id + 1).to_i), class:"btn btn-primary bi bi-arrow-right" %>
+              <% end %>
+            </div>
 
-<div class="row text-center m-auto">
-  <div class="col-1 bg-success">
-    <%= link_to '', pokedex_path(id:(@pokedex.id - 1).to_i), class:"btn btn-primary bi bi-arrow-left" %>
-  </div>
-  <div class="col-10 bg-info">
-    <div class="container h-100">
-     <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<%= @pokedex.id %>.png">
+          </div>
+          
+
+          <div class="mb-3">
+            <label class="form-label fw-bold">Nome do Pokémon</label>
+            <p class="form-control bg-light"><%= @pokedex.name %></p>
+          </div>
+
+          <div class="">
+            <label class="form-label fw-bold">Tipo</label>
+            <p class="form-control bg-light text-uppercase"><%= @pokedex.pk_type %></p>
+          </div>
+          
+          <div class="d-grid gap-2">
+            <%= link_to "Editar", edit_pokedex_path(@pokedex), class:"btn btn-primary" %>
+            <%= link_to "Voltar para Pokedex", pokedex_index_path, class:"btn btn-outline-secondary" %>
+          </div>
+
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="col-1 bg-success">
-    <%= link_to '', pokedex_path(id:(@pokedex.id + 1).to_i), class:"btn btn-primary bi bi-arrow-right" %>
   </div>
 </div>

@@ -17,7 +17,7 @@
       <div class="pt-2 row d-flex justify-content-center p-3">
 
         <div class=" col-2 text-center">
-          <img src="<%= @trainer.url_image %>" 
+          <img src="<%= @trainer.url_image.present? ? @trainer.url_image : "https://static.vecteezy.com/system/resources/thumbnails/003/337/584/small/default-avatar-photo-placeholder-profile-icon-vector.jpg" %>" 
           class="rounded-top img-fluid"
           style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover;">
 
@@ -37,7 +37,7 @@
                   <% @trainer.inventories.each do |inv| %>
                     <div class="d-flex align-items-center bg-white border rounded px-3 py-2 shadow-sm">
                       <img src="<%= inv.item.url_image %>" width="25" class="me-2"">
-                      <span class="fw-bold me-2" style="font-size: 0.9rem;"><%= inv.item.name %></span>
+                      <span class="fw-bold me-2" ><%= inv.item.name %></span>
                       <span class="badge bg-primary rounded">x<%= inv.quantity %></span>
                     </div>
                   <% end %>

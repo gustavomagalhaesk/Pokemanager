@@ -7,8 +7,8 @@ class PokemonsController < ApplicationController
 
     if params[:query].present?
       @pokemons = @pokemons.where(
-        "pokedex.name LIKE ? OR trainers.name LIKE ?", 
-        "%#{params[:query]}%", 
+        "pokedex.name LIKE ? OR trainers.name LIKE ?",
+        "%#{params[:query]}%",
         "%#{params[:query]}%"
       )
     end
@@ -41,10 +41,11 @@ class PokemonsController < ApplicationController
     end
 
     @pokemon = Pokemon.new(pokemon_params)
-    @pokemon.level ||= 1 
+    @pokemon.level ||= 1
+
 
     if @pokemon.valid?
-      if @trainer.use_item("pokebola-01")
+      if @trainer.use_item("pkball")
         if @pokemon.save
           redirect_to pokemons_path, notice: "Capturado!"
         else

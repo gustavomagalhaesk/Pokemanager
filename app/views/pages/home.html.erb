@@ -1,6 +1,47 @@
-<div class="p-2 py-4">
-  <div class="container">
-    <img src="https://img.odcdn.com.br/wp-content/uploads/2025/03/pokemosn-do-ash-1920x1080.jpg"
-    class="img-fluid rounded" >
+
+<div class="container mt-4">
+
+  <div class="text-white p-4 rounded shadow" style="background-image: url('/body_bg.png'); background-image: repeat; background-position: center;">
+    <div class="d-flex justify-content-between align-items-center" >
+      <div>
+        <h2 class="mb-0 text-info fw-bold"><i class="me-2"></i>Welcome</h2>
+      </div>
+    </div>
   </div>
+
+  <div class="d-grid mt-3 row d-flex justify-content-between">
+
+    <div class="col-5 d-grid row-gap-1">
+      <%= link_to pokeshop_path,
+      style:"background-image: url('/body_bg.png'); background-image: repeat; background-position: center;",
+      class:"link-offset-2 link-underline link-underline-opacity-0 text-white p-4 rounded shadowbtn text-light d-flex justify-content-between align-items-center" do %>
+        <h2 class="mb-0 text-info fw-bold"><i class="bi bi-shop me-2"></i>PokeShop</h2>
+      <% end %>
+
+      <%= link_to trainers_path,
+      style:"background-image: url('/body_bg.png'); background-image: repeat; background-position: center;",
+      class:"link-offset-2 link-underline link-underline-opacity-0 text-white p-4 rounded shadowbtn text-light d-flex justify-content-between align-items-center" do %>
+        <h2 class="mb-0 text-info fw-bold"><i class="bi bi-people-fill me-2"></i>Treinadores</h2>
+      <% end %>
+
+      <%= link_to pokemons_path,
+      style:"background-image: url('/body_bg.png'); background-image: repeat; background-position: center;",
+      class:"link-offset-2 link-underline link-underline-opacity-0 text-white p-4 rounded shadowbtn text-light d-flex justify-content-between align-items-center" do %>
+        <h2 class="mb-0 text-info fw-bold"><i class="bi bi-pc-display-horizontal me-2"></i>Pokemons</h2>
+      <% end %>
+
+      <%= link_to pokedex_index_path,
+      style:"background-image: url('/body_bg.png'); background-image: repeat; background-position: center;",
+      class:"link-offset-2 link-underline link-underline-opacity-0 text-white p-4 rounded shadowbtn text-light d-flex justify-content-between align-items-center" do %>
+        <h2 class="mb-0 text-info fw-bold"><i class="bi bi-device-ssd-fill me-2"></i>Pokedex</h2>
+      <% end %>
+    </div>
+  
+    <div class="col-7 d-flex align-items-center rounded">
+        <img src="https://img.odcdn.com.br/wp-content/uploads/2025/03/pokemosn-do-ash-1920x1080.jpg"
+        class="img-fluid rounded border border-2" >
+    </div>
+
+  </div>
+
 </div>

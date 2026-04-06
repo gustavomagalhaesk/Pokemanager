@@ -17,8 +17,6 @@
             <img src="<%= @item.url_image %>" 
                  class="img-fluid border rounded bg-light p-2 shadow-sm" 
                  style="width: 100px; height: 100px; object-fit: contain;"
-                 onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
-            <p class="text-muted small mt-2">ID: <%= @item.sku %></p>
           </div>
 
           <%= render "form", item: @item %>
