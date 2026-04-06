@@ -1,15 +1,30 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  sku: MyString
-  quantity: 1
+  name: Test Item
   price: 9.99
-  url_image: MyString
+  quantity: 10
+  sku: SKU001
+  url_image: https://example.com/image.jpg
 
 two:
-  name: MyString
-  sku: MyString
-  quantity: 1
-  price: 9.99
-  url_image: MyString
+  name: Another Item
+  price: 19.99
+  quantity: 5
+  sku: SKU002
+  url_image: https://example.com/image2.jpg
+
+
+#one:
+#  name: MyString
+#  sku: MyString
+#  quantity: 1
+#  price: 9.99
+#  url_image: MyString
+#
+#two:
+#  name: MyString
+#  sku: MyString
+#  quantity: 1
+#  price: 9.99
+#  url_image: MyString
