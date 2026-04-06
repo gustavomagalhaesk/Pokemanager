@@ -5,5 +5,4 @@ class PagesController < ApplicationController
   def pokeshop
     @items = Item.all
   end
-
 end

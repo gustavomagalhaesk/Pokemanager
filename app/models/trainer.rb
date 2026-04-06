@@ -16,5 +16,4 @@ class Trainer < ApplicationRecord
             false
         end
     end
-
 end

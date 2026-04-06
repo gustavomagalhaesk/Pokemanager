@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :pokemons
   resources :trainers
   resources :pokedex
-  resources :inventories, only: [:new, :create]
+  resources :inventories, only: [ :new, :create ]
   get "pages/home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -19,6 +19,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "pages#home"
-  
-  get 'pokeshop', to: 'pages#pokeshop', as: 'pokeshop'
+
+  get "pokeshop", to: "pages#pokeshop", as: "pokeshop"
 end

@@ -1,5 +1,5 @@
-require 'net/http'
-require 'json'
+require "net/http"
+require "json"
 
 class CurrencyService
   BASE_URL = "https://economia.awesomeapi.com.br/json/last/"

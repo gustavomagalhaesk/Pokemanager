@@ -1,5 +1,4 @@
 class InventoriesController < ApplicationController
-
   def new
     @inventory = Inventory.new
     @item = Item.find(params[:item_id])
@@ -39,5 +38,4 @@ class InventoriesController < ApplicationController
   def inventory_params
     params.require(:inventory).permit(:item_id, :trainer_id, :quantity)
   end
-
 end
