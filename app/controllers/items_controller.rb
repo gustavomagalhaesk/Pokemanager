@@ -4,8 +4,7 @@ class ItemsController < ApplicationController
   # GET /items or /items.json
   def index
     @items = Item.all
-    quote_data = CurrencyService.fetch_last_quote("JPY-BRL")
-    @exchange_value = quote_data ? quote_data["bid"].to_f : nil
+    @exchange_value = CurrencyService.convert("USD", "BRL", 1)
   end
 
   # GET /items/1 or /items/1.json
@@ -23,15 +22,13 @@ class ItemsController < ApplicationController
 
   # POST /items or /items.json
   def create
-    @item = Item.new(item_params)
+    def create
+      @item = Item.new(item_params)
 
-    respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: "Item was successfully created." }
-        format.json { render :show, status: :created, location: @item }
+        redirect_to items_path, notice: "Item criado com sucesso!"
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
+        render :new
       end
     end
   end

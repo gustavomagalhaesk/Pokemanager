@@ -22,7 +22,7 @@
     <%= form.label :pokedex_id, "Espécie Pokémon", class: "form-label fw-bold" %>
     <%= form.collection_select :pokedex_id, Pokedex.all, :id, :name, 
         { prompt: "Selecione um Pokémon" }, 
-        { class: "form-select" } %>
+        { class: "form-select", required: true } %>
   </div>
 
   <div class="row">

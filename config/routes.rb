@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+  get "inventories/new"
+  get "inventories/create"
   resources :items
   resources :pokemons
   resources :trainers
   resources :pokedex
+  resources :inventories, only: [:new, :create]
   get "pages/home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

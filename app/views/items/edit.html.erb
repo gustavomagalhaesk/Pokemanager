@@ -1,12 +1,29 @@
-<% content_for :title, "Editing item" %>
+<div class="container mt-5">
+  <% content_for :title, "Editando Item" %>
 
-<h1>Editing item</h1>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      
+      <div class="card shadow border-0 overflow-hidden">
+        
+        <div class="card-header bg-info text-white text-center py-3">
+          <h1 class="h3 mb-0">
+            <i class="bi bi-pencil-square me-2"></i>Editar Item
+          </h1>
+        </div>
 
-<%= render "form", item: @item %>
+        <div class="card-body p-4">
+          <div class="text-center mb-4">
+            <img src="<%= @item.url_image %>" 
+                 class="img-fluid border rounded bg-light p-2 shadow-sm" 
+                 style="width: 100px; height: 100px; object-fit: contain;"
+                 onerror="this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png'">
+            <p class="text-muted small mt-2">ID: <%= @item.sku %></p>
+          </div>
 
-<br>
-
-<div>
-  <%= link_to "Show this item", @item %> |
-  <%= link_to "Back to items", items_path %>
+          <%= render "form", item: @item %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

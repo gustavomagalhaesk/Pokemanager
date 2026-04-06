@@ -16,29 +16,46 @@
 
       <div class="pt-2 row d-flex justify-content-center p-3">
 
-        <img src="<%= @trainer.url_image%>" style="width: 200px ;height: 200px; object-fit: cover;" class="border rounded">
+        <div class=" col-2 text-center">
+          <img src="<%= @trainer.url_image %>" 
+          class="rounded-top img-fluid"
+          style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover;">
+
+          <h5 class="text-light bg-success rounded-bottom">$<%= @trainer.money %></h5>
+      </div>  
 
         <div class="col">
 
-          <h1><%= @trainer.name %></h1>
+          <h2><%= @trainer.name %></h2>
 
-          <h2 class="text-success">$<%= @trainer.money %></h2>
 
-          <div class="w-75">
+          <div class="card border-0 bg-light rounded-3 mb-3">
+            <div class="card-body p-3">
+              
+              <div class="d-flex flex-wrap gap-2">
+                <% if @trainer.inventories.any? %>
+                  <% @trainer.inventories.each do |inv| %>
+                    <div class="d-flex align-items-center bg-white border rounded px-3 py-2 shadow-sm">
+                      <img src="<%= inv.item.url_image %>" width="25" class="me-2"">
+                      <span class="fw-bold me-2" style="font-size: 0.9rem;"><%= inv.item.name %></span>
+                      <span class="badge bg-primary rounded">x<%= inv.quantity %></span>
+                    </div>
+                  <% end %>
+                <% else %>
+                  <span class="text-muted small italic">Nenhum item na mochila...</span>
+                <% end %>
+              </div>
+            </div>
+          </div>
 
-              <%= link_to new_pokemon_path(trainer: @trainer), class:"btn btn-primary link-offset-2 link-underline link-underline-opacity-0" do %>
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png">
+          <div class="row justify-content-end">
 
-                Catch a Pokemon
-              <% end %>
+            <%= link_to new_pokemon_path(trainer: @trainer), class:"btn btn-primary link-offset-2 link-underline link-underline-opacity-0 col-4" do %>
+              <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png">
 
-              <button class="btn btn-primary">
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/rare-candy.png">
+              Catch a Pokemon
+            <% end %>
 
-                <%= link_to '', new_pokemon_path, class:"link-offset-2 link-underline link-underline-opacity-0"%>
-
-                Level up a pokemon
-              </button>
 
           </div>
         </div>

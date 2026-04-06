@@ -20,7 +20,7 @@ class PokemonsController < ApplicationController
 
   # GET /pokemons/new
   def new
-    @pokemon = Pokemon.new(trainer_id: params[:trainer_id])
+    @pokemon = Pokemon.new(trainer_id: params[:trainer])
   end
 
   # GET /pokemons/1/edit
@@ -29,16 +29,34 @@ class PokemonsController < ApplicationController
 
   # POST /pokemons or /pokemons.json
   def create
-    @pokemon = Pokemon.new(pokemon_params)
+    t_id = pokemon_params[:trainer_id]
+    p_id = pokemon_params[:pokedex_id]
 
-    respond_to do |format|
-      if @pokemon.save
-        format.html { redirect_to @pokemon, notice: "Pokemon was successfully created." }
-        format.json { render :show, status: :created, location: @pokemon }
+    @trainer = Trainer.find(t_id)
+    @existing_pokemon = Pokemon.find_by(trainer_id: t_id, pokedex_id: p_id)
+
+    if @existing_pokemon
+      @existing_pokemon.increment!(:level)
+      redirect_to pokemons_path, notice: "Nível aumentado!" and return
+    end
+
+    @pokemon = Pokemon.new(pokemon_params)
+    @pokemon.level ||= 1 
+
+    if @pokemon.valid?
+      if @trainer.use_item("pokebola-01")
+        if @pokemon.save
+          redirect_to pokemons_path, notice: "Capturado!"
+        else
+          puts "ERRO DE BANCO: #{@pokemon.errors.full_messages}"
+          render :new, status: :unprocessable_entity
+        end
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @pokemon.errors, status: :unprocessable_entity }
+        redirect_to new_pokemon_path(trainer: t_id), alert: "Sem Pokébolas!"
       end
+    else
+      puts "ERRO DE VALIDAÇÃO: #{@pokemon.errors.full_messages}"
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -68,10 +86,10 @@ class PokemonsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_pokemon
-      @pokemon = Pokemon.find(params.expect(:id))
+      @pokemon = Pokemon.find(params[:id])
     end
 
     def pokemon_params
-      params.expect(pokemon: [ :pokedex_id, :level, :on_team, :trainer_id ])
+      params.require(:pokemon).permit(:trainer_id, :pokedex_id, :level, :on_team)
     end
 end
