@@ -1,27 +1,39 @@
-<p style="color: green"><%= notice %></p>
+<div class="container mt-4">
+  <div class="text-white p-4 rounded shadow" style="background-image: url('/body_bg.png'); background-image: repeat; background-position: center;">
+    <div class="d-flex justify-content-between align-items-center" >
+      <div>
+        <h2 class="mb-0 text-info fw-bold"><i class="bi bi-pc-display-horizontal me-2"></i>Items</h2>
+      </div>
+    </div>
+  </div>
 
-<% content_for :title, "Items" %>
+  <p style="color: green"><%= notice %></p>
 
-<h1>Items</h1>
+  <% content_for :title, "Items" %>
 
-<div id="items">
-  <% @items.each do |item| %>
-    <img src="<%= item.url_image %>">
-
-    <p><%= item.name %></p>
-
-    <h2>$ <%= item.price %></h2>
-
-    <% if @exchange_value %>
-      <h2>
-        <%= number_to_currency(item.price * @exchange_value, unit: "R$ ") %>
-      </h2>
-    <% end %>
-
-    <p>
-      <%= link_to "Show this item", item %>
-    </p>
-  <% end %>
+  <div class="w-100 d-flex justify-content-center">
+      <div class="row p-2 w-75 ">
+        <%@items.each do |item|%>
+          <div class="border shadow-sm rounded mt-1">
+            <div class="row rounded border-start border-4">
+              <div class="col-2 text-center">
+                <img src="<%= item.url_image %>" style="width: 100%; aspect-ratio: 1 / 1; object-fit: cover;">
+              </div>
+              <div class="col-6">
+                <h6 class="mb-0 pt-2"><%= item.name %> | id: <%= item.id %></h6>
+                <p class="mb-0"> Preço USD: $ <%= item.price %></p>
+                <% if @exchange_value %>
+                  <p>
+                    <%= number_to_currency(item.price * @exchange_value, unit: "R$ ") %>
+                  </p>
+                <% end %>
+              </div>
+              <div class="col-4 p-2 d-flex justify-content-end align-items-center">
+                <%= link_to "Ver item", item, class:"btn btn-info text-white" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
 </div>
-
-<%= link_to "New item", new_item_path %>
