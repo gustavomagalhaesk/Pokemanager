@@ -5,10 +5,22 @@
         <h2 class="mb-0 text-info fw-bold"><i class="bi bi-shop me-2"></i>PokeShop</h2>
       </div>
       
-      <div>
-        <%= link_to new_item_path, class: "btn btn-outline-success fw-bold shadow-sm" do %>
-          <i class="bi bi-plus-lg"></i> Adicionar Item
-        <% end %>
+      <div class="d-flex gap-2">
+        <div class="dropdown">
+          <button class="btn btn-outline-info fw-bold shadow-sm" data-bs-toggle="dropdown">
+            Moeda
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/pokeshop/?coin=dolar">$ - Dolar</a></li>
+            <li><a class="dropdown-item" href="/pokeshop/?coin=real">R$ - Real</a></li>
+            <li><a class="dropdown-item" href="/pokeshop/?coin=iene">¥ - Iene</a></li>
+          </ul>
+        </div>
+        <div>
+          <%= link_to new_item_path, class: "btn btn-outline-success fw-bold shadow-sm" do %>
+            <i class="bi bi-plus-lg"></i> Adicionar Item
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
@@ -37,9 +49,8 @@
           
           <div class="card-body">
             <h6 class="fw-bold mb-1"><%= item.name %></h6>
-              <% price_brl = CurrencyService.convert("USD", "BRL", item.price || 0) %>
               <p class="text-success fw-bold mb-0">
-              R$ <%= price_brl.round(2) %>
+              <%= convert_price(item.price, params[:coin])%>
             </p>
           </div>
           
