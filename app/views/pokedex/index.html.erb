@@ -2,7 +2,7 @@
   
   <% content_for :title, "Pokedex" %>
 
-  <div class="text-white p-4 rounded shadow" style="background-image: url('/body_bg.png'); background-image: repeat; background-position: center;">
+  <div class="text-white p-4 rounded shadow-sm" style="background-image: url('/body_bg.png'); background-image: repeat; background-position: center;">
     <div class="d-flex justify-content-between align-items-center">
       <div>
         <h2 class="mb-0 text-info fw-bold"><i class="bi bi-device-ssd-fill me-2"></i>Pokedex</h2>
@@ -17,8 +17,6 @@
   </div>
 
   <p style="color: green"><%= notice %></p>
-
-  
   
   <div class="row">
     <%@pokedex.each do |pokemon|%>
@@ -41,33 +39,3 @@
   </div>
   <%= link_to "Register a new pokemon in Pokedex", new_pokedex_path, class:"w-100 btn btn-success px-5" %>
 </div>
-
-
-<!--
-<div class="container">
-  <div class="row row-cols-1 row-cols-md-3 ">
-    <% @pokedex.each do |pokedex|%>
-      <div class="col">
-        <div class="row">
-          <div class="col col-sm-3">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/<%= pokedex.pokedex_id %>.png" >
-          </div>
-          <div class="col">
-            <span class="badge bg-primary ">#<%= pokedex.pokedex_id %></span>
-            <h1 class="h4"><%= pokedex.name%></h1>
-            <p><%= pokedex.pk_type %></p>
-          </div>
-          <div class="col">
-            <%= link_to edit_pokedex_path(pokedex.id) do %>
-              <i class="btn btn-primary bi bi-pencil-square"></i>
-            <% end %>
-            <%= link_to pokedex_path(pokedex), data: { turbo_method: :delete } do %>
-              <i class="btn btn-primary bi bi-trash"></i>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
-</div>
- -->
